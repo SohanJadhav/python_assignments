@@ -1,3 +1,6 @@
+#use matplot lib to draw data sets and check or clean data
+
+
 import pandas as pd
 from sklearn import preprocessing
 from sklearn.neighbors import KNeighborsClassifier
@@ -59,13 +62,15 @@ def main():
     print("Encoded Play data: ", Labels)
 
     Features= []
+
+    # try use zip to merge two columns
     for i in range(len(data)):
         Features.append([encoded_wether_data[i],encoded_temperature_data[i]])
     print("_"*100)
     print("Features Data after Merge")
     print(Features)
 
-    dobj= KNeighborsClassifier()
+    dobj= KNeighborsClassifier(n_neighbors=3)
     dobj.fit(Features, Labels)
 
     output= dobj.predict([[2, 1], [2, 1], [0, 1], [1, 2], [1, 0], [1, 0], [0, 0], [2, 2], [2, 0], [1, 2], [2, 2], [0, 2], [0, 1], [1, 2], [1, 2], [1, 0], [1, 0], [0, 0], [2, 2], [2, 0], [1, 2], [2, 2], [2, 1], [2, 1], [0, 1], [1, 2], [1, 0], [0, 0], [2, 2], [2, 0], [2, 1], [0, 1], [1, 2], [1, 0], [1, 0], [0, 0], [2, 2], [2, 0], [1, 2], [1, 0]])
